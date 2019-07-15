@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Attendance</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">JMD INFOTECH</string>
+    <string name="nav_header_subtitle">jmd-infotech.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Logout</string>
+
+
+    <string-array name="leaves_types">
+        <item>Select</item>
+        <item>Paid Leave</item>
+        <item>Casual Leave</item>
+        <item>Sick Leave</item>
+        <item>Extra Leave</item>
+    </string-array>
+
+</resources>

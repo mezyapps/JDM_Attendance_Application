@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:id="@+id/monthly_report_recucler_itm_layout"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3.7"
+            android:textColor="@color/black"
+            android:text="20-05-2019"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:id="@+id/login_date_report"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/login_time_report"
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:textColor="@color/black"
+            android:text="12:30"
+            android:gravity="center_horizontal"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:textColor="@color/black"
+            android:text="9:30"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:id="@+id/logout_time_report"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/work_minut_report"
+            android:textColor="@color/black"
+            android:text="540"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/black"
+            android:text="20"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:id="@+id/add_minutes_report"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/less_minutes_report"
+            android:textColor="@color/black"
+            android:text="10"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:id="@+id/net_minutes_report"
+            android:textColor="@color/black"
+            android:text="550"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3.7"
+            android:textColor="@color/black"
+            android:text="Monday"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:id="@+id/login_day_report"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:textColor="@color/black"
+            android:id="@+id/status_recyacler_view_month"
+            android:gravity="center_horizontal"
+            android:textScaleX=".9"
+            android:textSize="14sp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/black"
+            android:text=""
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/black"
+            android:text=""
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:textColor="@color/black"
+            android:text=""
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="#A39F9F"/>
+</LinearLayout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.LessMinutActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:background="@drawable/editextbackground"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:text="Date : "
+                android:gravity="center_vertical"
+                android:textColor="#000"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+            <View
+                android:layout_width="1dp"
+                android:background="#969596"
+                android:layout_height="40dp"/>
+            <TextView
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:text="Select Date"
+                android:id="@+id/tv_date_picker_less"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:background="@drawable/editextbackground"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:text="From Time : "
+                android:gravity="center_vertical"
+                android:textColor="#000"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+            <View
+                android:layout_width="1dp"
+                android:background="#969596"
+                android:layout_height="40dp"/>
+            <TextView
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:text="Select Time"
+                android:id="@+id/tv_time_picker_from_less"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+
+            android:background="@drawable/editextbackground"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:text="To Time : "
+                android:gravity="center_vertical"
+                android:textColor="#000"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+            <View
+                android:layout_width="1dp"
+                android:background="#969596"
+                android:layout_height="40dp"/>
+            <TextView
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:text="Select Time"
+                android:id="@+id/tv_time_picker_to_less"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:background="@drawable/editextbackground"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:text="Total Minutes : "
+                android:gravity="center_vertical"
+                android:textColor="#000"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+            <View
+                android:layout_width="1dp"
+                android:background="#969596"
+                android:layout_height="40dp"/>
+            <TextView
+                android:paddingLeft="10dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:id="@+id/tv_total_minutes_view_less"/>
+        </LinearLayout>
+        <EditText
+            android:paddingLeft="10dp"
+            android:hint="Remarks..."
+            android:layout_margin="10dp"
+            android:background="@drawable/editextbackground"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="textMultiLine"
+            android:textColor="#000"
+            android:id="@+id/lessminut_remarks_ed"
+            android:textSize="15sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/lessminut_submit_btn"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textColor="#fff"/>
+    </LinearLayout>
+</LinearLayout>

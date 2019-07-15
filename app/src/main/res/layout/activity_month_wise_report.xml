@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:overScrollMode="never"
+    tools:context=".activities.MonthWiseReport">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_marginTop="1dp"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="#000"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="From"/>
+        <TextView
+            android:textColor="#000"
+            android:id="@+id/monthly_report_from_date"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:text="from date"/>
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight=".5"
+                android:text="To"/>
+        <TextView
+            android:textColor="#000"
+            android:id="@+id/monthly_report_to_date"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:text="to date"/>
+
+        <Button
+            android:textColor="#000"
+            android:background="@drawable/editextbackground"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:onClick="getReportMethod"
+            android:layout_weight="1.2"
+            android:text="ok"/>
+    </LinearLayout>
+
+ <View
+            android:layout_marginTop="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3.7"
+            android:textColor="@color/black"
+            android:text="Date"
+            android:textStyle="bold"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:id="@+id/login_date_report"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/login_time_report"
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:textColor="@color/black"
+            android:text="IN"
+            android:gravity="center_horizontal"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:textColor="@color/black"
+            android:text="OUT"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:id="@+id/logout_time_report"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/work_report"
+            android:textColor="@color/black"
+            android:text="WM"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/black"
+            android:text="AM"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:id="@+id/add_minutes_report"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/less_minutes_report"
+            android:textColor="@color/black"
+            android:text="LM"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:id="@+id/net_minutes_report"
+            android:textColor="@color/black"
+            android:text="Net M"
+            android:textScaleX=".9"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/monthly_report_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_alignParentBottom="true"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:paddingTop="2dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="2dp"
+            android:background="@drawable/editextbackground"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:textColor="#D50741"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Worked Minutes    :"/>
+
+    <TextView
+        android:gravity="center_vertical|right"
+        android:id="@+id/total_net_minuts_report"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#D50741"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
+</LinearLayout>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:paddingTop="2dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="2dp"
+            android:background="@drawable/editextbackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textColor="#D50741"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Minutes to Work    : "/>
+
+            <TextView
+                android:gravity="center_vertical|right"
+                android:id="@+id/total_day_minuts_report"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#D50741"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
+        </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingTop="2dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingBottom="2dp"
+        android:background="@drawable/editextbackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textColor="#D50741"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Balance Minutes    :"/>
+
+        <TextView
+            android:gravity="center_vertical|right"
+            android:id="@+id/total_balance_minuts_report"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#D50741"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+        </LinearLayout>
+    </RelativeLayout></LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

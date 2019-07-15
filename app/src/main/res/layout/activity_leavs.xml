@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.LeavsActivity">
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/editextbackground"
+        android:orientation="horizontal">
+        <TextView
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            android:text="From Date : "
+            android:gravity="center_vertical"
+            android:textColor="#000"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="40dp" />
+        <View
+            android:layout_width="1dp"
+            android:background="#969596"
+            android:layout_height="40dp"/>
+        <TextView
+            android:paddingLeft="10dp"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="40dp"
+            android:text="Select Date"
+            android:id="@+id/tv_date_picker_leaves_from"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/editextbackground"
+        android:orientation="horizontal">
+        <TextView
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            android:text="To Date : "
+            android:gravity="center_vertical"
+            android:textColor="#000"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="40dp" />
+        <View
+            android:layout_width="1dp"
+            android:background="#969596"
+            android:layout_height="40dp"/>
+        <TextView
+            android:paddingLeft="10dp"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="40dp"
+            android:text="Select Date"
+            android:id="@+id/tv_date_picker_leaves_to"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/editextbackground"
+        android:orientation="horizontal">
+        <TextView
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            android:text="Leaves Type :"
+            android:gravity="center_vertical"
+            android:textColor="#000"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="40dp" />
+        <View
+            android:layout_width="1dp"
+            android:background="#969596"
+            android:layout_height="40dp"/>
+        <Spinner
+            android:paddingLeft="10dp"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:id="@+id/leave_types_spinnner"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/colorPrimary" />
+
+    </LinearLayout>
+    <EditText
+        android:paddingLeft="10dp"
+        android:hint="Remarks..."
+        android:layout_margin="10dp"
+        android:background="@drawable/editextbackground"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textMultiLine"
+        android:textColor="#000"
+        android:id="@+id/leave_types_remarks_ed"
+        android:textSize="15sp"/>
+<RelativeLayout
+    android:visibility="gone"
+    android:id="@+id/imagepicker_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/image_view_doctor_report"
+        android:layout_margin="10dp"
+        android:background="@drawable/editextbackground"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <ImageView
+        android:onClick="imageChooseMethod"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_photo_camera_black_24dp"/>
+</RelativeLayout>
+    <Button
+        android:onClick="leavesSubmitbtnMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:visibility="gone"
+        android:id="@+id/leave_submit_btn"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textColor="#fff"/>
+</LinearLayout>

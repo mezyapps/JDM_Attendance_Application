@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech.adapters;
+package com.mezyapps.jmdinfotech.view.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

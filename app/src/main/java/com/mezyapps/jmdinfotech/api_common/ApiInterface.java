@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech.Retrofit;
+package com.mezyapps.jmdinfotech.api_common;
 
 
 

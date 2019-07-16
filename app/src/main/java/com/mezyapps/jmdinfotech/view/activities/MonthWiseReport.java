@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech.activities;
+package com.mezyapps.jmdinfotech.view.activities;
 
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.mezyapps.jmdinfotech.model.MonthReportItem;
 import com.mezyapps.jmdinfotech.model.MonthlyReportsResponse;
 import com.mezyapps.jmdinfotech.R;
-import com.mezyapps.jmdinfotech.Retrofit.Api;
-import com.mezyapps.jmdinfotech.adapters.MonthlyReportsAdapter;
+import com.mezyapps.jmdinfotech.api_common.ApiClient;
+import com.mezyapps.jmdinfotech.view.adapters.MonthlyReportsAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -174,7 +174,7 @@ RecyclerView monthly_report_recyclerview;
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        Api.getClient().monthlyReports(MainActivity.userId,monthly_report_from_date.getText().toString().trim(),monthly_report_to_date.getText().toString().trim(),
+        ApiClient.getClient().monthlyReports(MainActivity.userId,monthly_report_from_date.getText().toString().trim(),monthly_report_to_date.getText().toString().trim(),
                 new Callback<MonthlyReportsResponse>() {
                     @Override
                     public void success(MonthlyReportsResponse monthlyReportsResponses, Response response) {

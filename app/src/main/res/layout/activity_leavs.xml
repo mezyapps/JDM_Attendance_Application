@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.LeavsActivity">
+    tools:context=".view.activities.LeavsActivity">
     <LinearLayout
         android:layout_margin="10dp"
         android:layout_width="match_parent"

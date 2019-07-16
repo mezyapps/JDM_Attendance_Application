@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech.activities;
+package com.mezyapps.jmdinfotech.view.activities;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -32,7 +32,7 @@ import android.widget.Toast;
 
 import com.mezyapps.jmdinfotech.model.LeaveAvailabilityResponse;
 import com.mezyapps.jmdinfotech.R;
-import com.mezyapps.jmdinfotech.Retrofit.Api;
+import com.mezyapps.jmdinfotech.api_common.ApiClient;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -210,7 +210,7 @@ private  String encodedimage;
 
     private void checkLeaveAvailability(String leavTypeString) {
         // getting news list data
-        Api.getClient().checkLeaveAvailability(MainActivity.userId,tv_date_picker_leaves_from.getText().toString().trim(),tv_date_picker_leaves_to.getText().toString().trim(),leavTypeString,
+        ApiClient.getClient().checkLeaveAvailability(MainActivity.userId,tv_date_picker_leaves_from.getText().toString().trim(),tv_date_picker_leaves_to.getText().toString().trim(),leavTypeString,
                 new Callback<LeaveAvailabilityResponse>() {
                     @Override
                     public void success(LeaveAvailabilityResponse leaveAvailabilityResponse, Response response) {
@@ -309,7 +309,7 @@ private  String encodedimage;
                 if (encodedimage == null){
                     Toast.makeText(this, "Image Requierds", Toast.LENGTH_SHORT).show();
                 }else{
-                Api.getClient().submitLeave(MainActivity.userId,tv_date_picker_leaves_from.getText().toString().trim(),tv_date_picker_leaves_to.getText().toString().trim(),leavTypeString,remarks,encodedimage,
+                ApiClient.getClient().submitLeave(MainActivity.userId,tv_date_picker_leaves_from.getText().toString().trim(),tv_date_picker_leaves_to.getText().toString().trim(),leavTypeString,remarks,encodedimage,
                         new Callback<LeaveAvailabilityResponse>() {
                             @Override
                             public void success(LeaveAvailabilityResponse leaveAvailabilityResponse, Response response) {
@@ -332,7 +332,7 @@ private  String encodedimage;
             }
     } else{
                 encodedimage="";
-                Api.getClient().submitLeave(MainActivity.userId,tv_date_picker_leaves_from.getText().toString().trim(),tv_date_picker_leaves_to.getText().toString().trim(),leavTypeString,remarks,encodedimage,
+                ApiClient.getClient().submitLeave(MainActivity.userId,tv_date_picker_leaves_from.getText().toString().trim(),tv_date_picker_leaves_to.getText().toString().trim(),leavTypeString,remarks,encodedimage,
                         new Callback<LeaveAvailabilityResponse>() {
                             @Override
                             public void success(LeaveAvailabilityResponse leaveAvailabilityResponse, Response response) {

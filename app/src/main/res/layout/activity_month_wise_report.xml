@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:overScrollMode="never"
-    tools:context=".activities.MonthWiseReport">
+    tools:context=".view.activities.MonthWiseReport">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech.activities;
+package com.mezyapps.jmdinfotech.view.activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.mezyapps.jmdinfotech.model.ExtraAndLessMinutResponse;
 import com.mezyapps.jmdinfotech.R;
-import com.mezyapps.jmdinfotech.Retrofit.Api;
+import com.mezyapps.jmdinfotech.api_common.ApiClient;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,28 +29,29 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class LessMinutActivity extends AppCompatActivity {
-    private TextView tv_date_picker_less,tv_time_picker_from_less,tv_time_picker_to_less,tv_total_minutes_view_less;
-    private String format;
-    private Button lessminut_submit_btn;
-    private EditText lessminut_remarks_ed;
+public class ExtraMinutActivity extends AppCompatActivity {
+ private TextView tv_date_picker_extra,tv_time_picker_from_extra,tv_time_picker_to_extra,tv_total_minutes_view;
+ private String format;
+ private Button extraminut_submit_btn;
+ private EditText extaminut_remarks_ed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_less_minut);
+        setContentView(R.layout.activity_extra_minut);
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            // getSupportActionBar().setDisplayShowTitleEnabled(false);
-            getSupportActionBar().setTitle("Less Minuts");
+           // getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setTitle("Add Minuts");
         }
 
-        tv_date_picker_less=findViewById(R.id.tv_date_picker_less);
-        tv_time_picker_from_less=findViewById(R.id.tv_time_picker_from_less);
-        tv_time_picker_to_less=findViewById(R.id.tv_time_picker_to_less);
-        lessminut_submit_btn=findViewById(R.id.lessminut_submit_btn);
-        lessminut_remarks_ed=findViewById(R.id.lessminut_remarks_ed);
-        tv_total_minutes_view_less=findViewById(R.id.tv_total_minutes_view_less);
+        tv_date_picker_extra=findViewById(R.id.tv_date_picker_extra);
+        tv_time_picker_from_extra=findViewById(R.id.tv_time_picker_from_extra);
+        tv_time_picker_to_extra=findViewById(R.id.tv_time_picker_to_extra);
+        extraminut_submit_btn=findViewById(R.id.extraminut_submit_btn);
+        extaminut_remarks_ed=findViewById(R.id.extaminut_remarks_ed);
+        tv_total_minutes_view=findViewById(R.id.tv_total_minutes_view);
+
 
 
 
@@ -59,10 +60,10 @@ public class LessMinutActivity extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String todate= dateFormat.format(currentdate());
         String  currentdate = todate.toString(); //here you get current dat
-        tv_date_picker_less.setText(currentdate);
+        tv_date_picker_extra.setText(currentdate);
 
 
-        tv_date_picker_less.setOnClickListener(new View.OnClickListener() {
+        tv_date_picker_extra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -84,7 +85,7 @@ public class LessMinutActivity extends AppCompatActivity {
                         strBuf.append("-");
                         strBuf.append(year);
 
-                        tv_date_picker_less.setText(strBuf.toString());
+                        tv_date_picker_extra.setText(strBuf.toString());
                     }
                 };
                 // Get current year, month and day.
@@ -93,7 +94,7 @@ public class LessMinutActivity extends AppCompatActivity {
                 int month = now.get(Calendar.MONTH);
                 int day = now.get(Calendar.DAY_OF_MONTH);
                 // DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, onDateSetListener, year, month, day);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(LessMinutActivity.this, android.R.style.Theme_Holo_Dialog, onDateSetListener, year, month, day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(ExtraMinutActivity.this, android.R.style.Theme_Holo_Dialog, onDateSetListener, year, month, day);
                 // Set dialog icon and title.
                 //  datePickerDialog.setIcon(R.drawable.appiconn);
                 datePickerDialog.setTitle("Please select date.");
@@ -132,10 +133,10 @@ public class LessMinutActivity extends AppCompatActivity {
         if (minutString.length() == 1) {
             minutString = "0" + minutString;
         }
-        tv_time_picker_from_less.setText(hourString + ":" + minutString + " "+format);
-        tv_time_picker_to_less.setText(hourString + ":" + minutString + " "+format);
+        tv_time_picker_from_extra.setText(hourString + ":" + minutString + " "+format);
+        tv_time_picker_to_extra.setText(hourString + ":" + minutString + " "+format);
         calculateMinute();
-        tv_time_picker_from_less.setOnClickListener(new View.OnClickListener() {
+        tv_time_picker_from_extra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Create a new OnDateSetListener instance. This listener will be invoked when user click ok button in DatePickerDialog.
@@ -160,7 +161,7 @@ public class LessMinutActivity extends AppCompatActivity {
                         if (minutString.length() == 1) {
                             minutString = "0" + minutString;
                         }
-                        tv_time_picker_from_less.setText(hourString + ":" + minutString + " "+format);
+                        tv_time_picker_from_extra.setText(hourString + ":" + minutString + " "+format);
                         calculateMinute();
                     }
                 };
@@ -168,7 +169,7 @@ public class LessMinutActivity extends AppCompatActivity {
                 Calendar now = Calendar.getInstance();
                 int hour = now.get(Calendar.HOUR_OF_DAY);
                 int minut = now.get(Calendar.MINUTE);
-                TimePickerDialog timePickerDialog = new TimePickerDialog(LessMinutActivity.this, android.R.style.Theme_Holo_Dialog, onTimeSetListener,hour,minut,false);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(ExtraMinutActivity.this, android.R.style.Theme_Holo_Dialog, onTimeSetListener,hour,minut,false);
                 timePickerDialog.setTitle("please select time.");
 
                 // Popup the dialog.
@@ -181,7 +182,7 @@ public class LessMinutActivity extends AppCompatActivity {
 
 
 
-        tv_time_picker_to_less.setOnClickListener(new View.OnClickListener() {
+        tv_time_picker_to_extra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Create a new OnDateSetListener instance. This listener will be invoked when user click ok button in DatePickerDialog.
@@ -208,7 +209,7 @@ public class LessMinutActivity extends AppCompatActivity {
                         if (minutString.length() == 1) {
                             minutString = "0" + minutString;
                         }
-                        tv_time_picker_to_less.setText(hourString + ":" + minutString + " "+format);
+                        tv_time_picker_to_extra.setText(hourString + ":" + minutString + " "+format);
                         calculateMinute();
                     }
                 };
@@ -216,7 +217,7 @@ public class LessMinutActivity extends AppCompatActivity {
                 Calendar now = Calendar.getInstance();
                 int hour = now.get(Calendar.HOUR_OF_DAY);
                 int minut = now.get(Calendar.MINUTE);
-                TimePickerDialog timePickerDialog = new TimePickerDialog(LessMinutActivity.this, android.R.style.Theme_Holo_Dialog, onTimeSetListener,hour,minut,false);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(ExtraMinutActivity.this, android.R.style.Theme_Holo_Dialog, onTimeSetListener,hour,minut,false);
                 timePickerDialog.setTitle("please select time.");
 
                 // Popup the dialog.
@@ -227,34 +228,34 @@ public class LessMinutActivity extends AppCompatActivity {
 //        time picker end
 
 
-        lessminut_submit_btn.setOnClickListener(new View.OnClickListener() {
+        extraminut_submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LessMinutActivity.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ExtraMinutActivity.this);
                 alertDialogBuilder.setMessage("Are you sure want to Submit ?");
                 alertDialogBuilder.setPositiveButton("yes",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                final SweetAlertDialog pDialog = new SweetAlertDialog(LessMinutActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                                final SweetAlertDialog pDialog = new SweetAlertDialog(ExtraMinutActivity.this, SweetAlertDialog.PROGRESS_TYPE);
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorPrimary));
                                 pDialog.setTitleText("Loading");
                                 pDialog.setCancelable(false);
                                 pDialog.show();
 
 
-                                Api.getClient().lessMinuts(MainActivity.userId,tv_date_picker_less.getText().toString().trim(),tv_time_picker_from_less.getText().toString().trim(),tv_time_picker_to_less.getText().toString().trim(),lessminut_remarks_ed.getText().toString().trim(),
+                                ApiClient.getClient().extraMinuts(MainActivity.userId,tv_date_picker_extra.getText().toString().trim(),tv_time_picker_from_extra.getText().toString().trim(),tv_time_picker_to_extra.getText().toString().trim(),extaminut_remarks_ed.getText().toString().trim(),
                                         new Callback<ExtraAndLessMinutResponse>() {
                                             @Override
                                             public void success(ExtraAndLessMinutResponse extraAndLessMinutResponse, Response response) {
                                                 if (extraAndLessMinutResponse.getSuccess().equalsIgnoreCase("true")) {
                                                     Toast.makeText(getApplicationContext(), extraAndLessMinutResponse.getMessage(), Toast.LENGTH_SHORT).show();
                                                     pDialog.dismiss();
-                                                    tv_time_picker_to_less.setText("");
-                                                    tv_time_picker_from_less.setText("");
-                                                    tv_date_picker_less.setText("");
-                                                    lessminut_remarks_ed.setText("");
+                                                    tv_time_picker_to_extra.setText("");
+                                                    tv_time_picker_from_extra.setText("");
+                                                    tv_date_picker_extra.setText("");
+                                                    extaminut_remarks_ed.setText("");
                                                 } else {
                                                     pDialog.dismiss();
                                                     Toast.makeText(getApplicationContext(), extraAndLessMinutResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -300,24 +301,22 @@ public class LessMinutActivity extends AppCompatActivity {
             finish();
         return super.onOptionsItemSelected(item);
     }
+private  void calculateMinute(){
+    long min = 0;
+    long difference ;
+    try {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm aa");
+        Date date1 = simpleDateFormat.parse(tv_time_picker_from_extra.getText().toString());
+        Date date2 = simpleDateFormat.parse(tv_time_picker_to_extra.getText().toString());
 
-    private  void calculateMinute(){
-        long min = 0;
-        long difference ;
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm aa"); // for 12-hour system, hh should be used instead of HH
-            // There is no minute different between the two, only 8 hours difference. We are not considering Date, So minute will always remain 0
-            Date date1 = simpleDateFormat.parse(tv_time_picker_from_less.getText().toString());
-            Date date2 = simpleDateFormat.parse(tv_time_picker_to_less.getText().toString());
-
-            difference = (date2.getTime() - date1.getTime()) / 1000;
-            long hours = difference % (24 * 3600) / 3600; // Calculating Hours
-            long minute = difference % 3600 / 60; // Calculating minutes if there is any minutes difference
-            min = minute + (hours * 60); // This will be our final minutes. Multiplying by 60 as 1 hour contains 60 mins
-            tv_total_minutes_view_less.setText(String.valueOf(min));
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+        difference = (date2.getTime() - date1.getTime()) / 1000;
+        long hours = difference % (24 * 3600) / 3600; // Calculating Hours
+        long minute = difference % 3600 / 60; // Calculating minutes if there is any minutes difference
+        min = minute + (hours * 60); // This will be our final minutes. Multiplying by 60 as 1 hour contains 60 mins
+        tv_total_minutes_view.setText(String.valueOf(min));
+    } catch (Throwable e) {
+        e.printStackTrace();
     }
+}
 
 }

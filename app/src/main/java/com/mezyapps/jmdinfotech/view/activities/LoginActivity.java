@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech.activities;
+package com.mezyapps.jmdinfotech.view.activities;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
@@ -12,7 +12,7 @@ import com.mezyapps.jmdinfotech.Common;
 import com.mezyapps.jmdinfotech.Config;
 import com.mezyapps.jmdinfotech.model.SignUpResponse;
 import com.mezyapps.jmdinfotech.R;
-import com.mezyapps.jmdinfotech.Retrofit.Api;
+import com.mezyapps.jmdinfotech.api_common.ApiClient;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit.Callback;
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             pDialog.setTitleText("Loading");
             pDialog.setCancelable(false);
             pDialog.show();
-           Api.getClient().login(string_username,
+           ApiClient.getClient().login(string_username,
                 new Callback<SignUpResponse>() {
                     @Override
                     public void success(SignUpResponse signUpResponse, Response response) {

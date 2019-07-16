@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech.activities;
+package com.mezyapps.jmdinfotech.view.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -48,7 +48,7 @@ import com.mezyapps.jmdinfotech.Config;
 import com.mezyapps.jmdinfotech.model.EmpDetailItem;
 import com.mezyapps.jmdinfotech.model.InOutResponse;
 import com.mezyapps.jmdinfotech.R;
-import com.mezyapps.jmdinfotech.Retrofit.Api;
+import com.mezyapps.jmdinfotech.api_common.ApiClient;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -79,40 +79,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String logintime_response="",logouttime_response="",llocation,TimeAnndDate,tag;
     TextView emp_id_ed,address_ed,time_slot,empname,latemark_v,eaegecy_tv,paid_leav_tv,casual_leavve,sick_leave,balnce_minut,leave_type,tv_time_picker,tv_date_picker;
     TextView tv_login_time_view,tv_logout_time_view;
-   public static String userId;
+    public static String userId;
     public static final int RequestPermissionCode = 1;
     String format;
     LinearLayout loginLogout_time_view_layout;
     ImageView profile_image;
+    private Toolbar  toolbar;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
-             getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        find_All_IDs();
+        events();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        getUserId();
-        empname = drawer.findViewById(R.id.name_emp);
+    }
+
+
+    private void find_All_IDs() {
+        toolbar = findViewById(R.id.toolbar);
+        drawer =  findViewById(R.id.drawer_layout);
+        navigationView =findViewById(R.id.nav_view);
         profile_image=findViewById(R.id.profile_image);
-//        empname.setText("ESRAFIL ANSARI");
-
-
         tv_time_picker=findViewById(R.id.tv_time_picker);
         tv_date_picker=findViewById(R.id.tv_date_picker);
         loginLogout_time_view_layout=findViewById(R.id.loginLogout_time_view_layout);
         tv_login_time_view=findViewById(R.id.tv_login_time_view);
         tv_logout_time_view=findViewById(R.id.tv_logout_time_view);
+
+    }
+
+
+    private void events() {
+
+
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+        navigationView.setNavigationItemSelectedListener(this);
+        getUserId();
+        empname = drawer.findViewById(R.id.name_emp);
+
+//        empname.setText("ESRAFIL ANSARI");
+
 
         ///create object area END
 //location permission and method call start
@@ -217,53 +236,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        time picker end
 //date picker start
 
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                String todate= dateFormat.format(currentdate());
-                String  currentdate = todate.toString(); //here you get current dat
-                tv_date_picker.setText(currentdate);
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String todate= dateFormat.format(currentdate());
+        String  currentdate = todate.toString(); //here you get current dat
+        tv_date_picker.setText(currentdate);
 
 
-                tv_date_picker.setOnClickListener(new View.OnClickListener() {
+        tv_date_picker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onClick(View view) {
-                        DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                                StringBuffer strBuf = new StringBuffer();
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        StringBuffer strBuf = new StringBuffer();
 
-                                String  monthString=String.valueOf(month+1);
-                                String dateString=String.valueOf(dayOfMonth);
-                                if (monthString.length() == 1) {
-                                    monthString = "0" + monthString;
-                                }
-                                if (dateString.length() == 1) {
-                                    dateString = "0" + dateString;
-                                }
-                                strBuf.append(dateString);
-                                strBuf.append("-");
-                                strBuf.append(monthString);
-                                strBuf.append("-");
-                                strBuf.append(year);
+                        String  monthString=String.valueOf(month+1);
+                        String dateString=String.valueOf(dayOfMonth);
+                        if (monthString.length() == 1) {
+                            monthString = "0" + monthString;
+                        }
+                        if (dateString.length() == 1) {
+                            dateString = "0" + dateString;
+                        }
+                        strBuf.append(dateString);
+                        strBuf.append("-");
+                        strBuf.append(monthString);
+                        strBuf.append("-");
+                        strBuf.append(year);
 
-                                tv_date_picker.setText(strBuf.toString());
-                                getInOUTTagData();
-                            }
-                        };
-                        // Get current year, month and day.
-                        Calendar now = Calendar.getInstance();
-                        int year = now.get(Calendar.YEAR);
-                        int month = now.get(Calendar.MONTH);
-                        int day = now.get(Calendar.DAY_OF_MONTH);
-                        // DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, onDateSetListener, year, month, day);
-                        DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, android.R.style.Theme_Holo_Dialog, onDateSetListener, year, month, day);
-                        // Set dialog icon and title.
-                        //  datePickerDialog.setIcon(R.drawable.appiconn);
-                        datePickerDialog.setTitle("Please select date.");
-
-                        // Popup the dialog.
-                        datePickerDialog.show();
+                        tv_date_picker.setText(strBuf.toString());
+                        getInOUTTagData();
                     }
-                });
+                };
+                // Get current year, month and day.
+                Calendar now = Calendar.getInstance();
+                int year = now.get(Calendar.YEAR);
+                int month = now.get(Calendar.MONTH);
+                int day = now.get(Calendar.DAY_OF_MONTH);
+                // DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, onDateSetListener, year, month, day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, android.R.style.Theme_Holo_Dialog, onDateSetListener, year, month, day);
+                // Set dialog icon and title.
+                //  datePickerDialog.setIcon(R.drawable.appiconn);
+                datePickerDialog.setTitle("Please select date.");
+
+                // Popup the dialog.
+                datePickerDialog.show();
+            }
+        });
 
 
 //date picker end
@@ -271,10 +290,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //leave_staus();
         getInOUTTagData();
+
     }
 
+
     private void getInOUTTagData() {
-        Api.getClient().getInOUTTagData(userId,tv_date_picker.getText().toString().trim(),
+        ApiClient.getClient().getInOUTTagData(userId,tv_date_picker.getText().toString().trim(),
                 new Callback<InOutResponse>() {
                     @Override
                     public void success(InOutResponse inOutResponse, Response response) {
@@ -326,7 +347,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     pDialog.setTitleText("Loading");
                                     pDialog.setCancelable(false);
                                     pDialog.show();
-                                    Api.getClient().in(userId,tv_date_picker.getText().toString().trim(),tv_time_picker.getText().toString().trim(),llocation,
+                                    ApiClient.getClient().in(userId,tv_date_picker.getText().toString().trim(),tv_time_picker.getText().toString().trim(),llocation,
                                             new Callback<InOutResponse>() {
                                                 @Override
                                                 public void success(InOutResponse inOutResponse, Response response) {
@@ -390,7 +411,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     pDialog.setTitleText("Loading");
                                     pDialog.setCancelable(false);
                                     pDialog.show();
-                                    Api.getClient().out(userId,tv_date_picker.getText().toString().trim(),tv_time_picker.getText().toString().trim(),llocation,
+                                    ApiClient.getClient().out(userId,tv_date_picker.getText().toString().trim(),tv_time_picker.getText().toString().trim(),llocation,
                                             new Callback<InOutResponse>() {
                                                 @Override
                                                 public void success(InOutResponse inOutResponse, Response response) {
@@ -748,7 +769,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     public void getAllEmpDetails() {
-        Api.getClient().empDetails(MainActivity.userId,
+        ApiClient.getClient().empDetails(MainActivity.userId,
                 new Callback<EmpDetailItem>() {
                     @Override
                     public void success(EmpDetailItem empDetailItem, Response response) {

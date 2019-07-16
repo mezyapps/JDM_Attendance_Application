@@ -8,17 +8,19 @@ import com.mezyapps.jmdinfotech.model.InOutResponse;
 import com.mezyapps.jmdinfotech.model.LeaveAvailabilityResponse;
 import com.mezyapps.jmdinfotech.model.MonthlyReportsResponse;
 import com.mezyapps.jmdinfotech.model.SignUpResponse;
+import com.mezyapps.jmdinfotech.model.SuccessModule;
 
 import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.POST;
 
+
 public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/attendance/app/monthlyreports.php")
-    public void monthlyReports(@Field("emp_id") String user_id,
+        public void monthlyReports(@Field("emp_id") String user_id,
                                @Field("from_date") String from_date,
                                @Field("to_date") String to_date,
                                Callback <MonthlyReportsResponse> callback);
@@ -27,10 +29,10 @@ public interface ApiInterface {
     public void empDetails(@Field("emp_id") String user_id,
                                Callback <EmpDetailItem> callback);
 
-    @FormUrlEncoded
+   /* @FormUrlEncoded
     @POST("/attendance/app/login.php")
     public void login(@Field("mobile") String mobile,
-                      Callback<SignUpResponse> callback);
+                      Callback<SignUpResponse> callback);*/
 
     @FormUrlEncoded
     @POST("/attendance/app/get_tag.php")
@@ -92,5 +94,7 @@ public interface ApiInterface {
                            @Field("to_time") String to_time,
                            @Field("remarks") String remarks,
                            Callback<ExtraAndLessMinutResponse> callback);
+
+
 
 }

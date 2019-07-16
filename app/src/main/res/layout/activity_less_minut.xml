@@ -149,13 +149,13 @@
             android:textSize="15sp"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:id="@+id/lessminut_submit_btn"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/btn_shape"
             android:textSize="15sp"
             android:textColor="#fff"/>
     </LinearLayout>

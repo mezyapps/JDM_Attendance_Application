@@ -1,4 +1,4 @@
-package com.mezyapps.jmdinfotech;
+package com.mezyapps.jmdinfotech.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
  * Created by AbhiAndroid
  */
 
-public class Common {
+public class SharedUtils {
     public static final String SHARED_PREF = "userData";
 
     public static void saveUserData(Context context, String key, String value) {

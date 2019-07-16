@@ -5,30 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".view.activities.LoginActivity">
 
     <RelativeLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
+            android:id="@+id/textWelcomeMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome In JMD Infotech"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
+            android:text="Welcome To JMD Infotech"
             android:textSize="20sp"
-            android:textStyle="italic|bold"/>
+            android:textStyle="italic|bold" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textWelcomeMsg"
+            android:src="@drawable/jmd_logo" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
+            android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
 
@@ -44,11 +54,12 @@
                     android:id="@+id/ed_username_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mobile No"
-                    android:inputType="number"
+                    android:drawableLeft="@drawable/ic_vector_mobile"
                     android:drawablePadding="5dp"
-                    android:textSize="15sp"
-                    android:drawableLeft="@drawable/ic_vector_mobile" />
+                    android:hint="Mobile No"
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:textSize="15sp" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -71,11 +82,10 @@
                 android:text="There is Something Good In Every Day"
                 android:textAlignment="center"
                 android:textColor="#000"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
 
         </LinearLayout>
-
 
 
     </RelativeLayout>

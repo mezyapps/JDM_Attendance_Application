@@ -43,7 +43,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
-import com.mezyapps.jmdinfotech.Common;
+import com.mezyapps.jmdinfotech.utils.SharedUtils;
 import com.mezyapps.jmdinfotech.Config;
 import com.mezyapps.jmdinfotech.model.EmpDetailItem;
 import com.mezyapps.jmdinfotech.model.InOutResponse;
@@ -75,15 +75,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private long UPDATE_INTERVAL = 2 * 1000;  /* 10 secs */
     private long FASTEST_INTERVAL = 2000; /* 2 sec */
     private LocationManager locationManager;
-    TextView leave_status;
+    private TextView leave_status;
     private String logintime_response="",logouttime_response="",llocation,TimeAnndDate,tag;
     TextView emp_id_ed,address_ed,time_slot,empname,latemark_v,eaegecy_tv,paid_leav_tv,casual_leavve,sick_leave,balnce_minut,leave_type,tv_time_picker,tv_date_picker;
     TextView tv_login_time_view,tv_logout_time_view;
-    public static String userId;
-    public static final int RequestPermissionCode = 1;
-    String format;
-    LinearLayout loginLogout_time_view_layout;
-    ImageView profile_image;
+    public  static String userId;
+    public  static final int RequestPermissionCode = 1;
+    private String format;
+    private LinearLayout loginLogout_time_view_layout;
+    private ImageView profile_image;
     private Toolbar  toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -330,7 +330,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             final Button btn = new Button(this);
             btn.setText("LOGIN");
             btn.setTextColor(Color.WHITE);
-            btn.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
+            btn.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
             layout.addView(btn);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -463,8 +463,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             layout.setVisibility(View.VISIBLE);
             layout.setOrientation(LinearLayout.VERTICAL);
             final Button btn2 = new Button(this);
-            btn2.setBackgroundColor(R.color.colorPrimaryDark);
-            btn2.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
+            btn2.setBackgroundColor(R.color.colorAccent);
+            btn2.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
             btn2.setTextColor(Color.WHITE);
             btn2.setText("No Allowed ");
             layout.addView(btn2);
@@ -557,8 +557,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Common.saveUserData(MainActivity.this, "mobile", "");
-                Common.saveUserData(MainActivity.this, "userId", "");
+                SharedUtils.saveUserData(MainActivity.this, "is_login", "");
+                SharedUtils.saveUserData(MainActivity.this, "userId", "");
                 Config.moveTo(MainActivity.this, LoginActivity.class);
                 finish();
 
@@ -734,10 +734,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //    }
 
     private void getUserId() {
-        if (Common.getSavedUserData(MainActivity.this, "userId").equalsIgnoreCase("")) {
+        if (SharedUtils.getSavedUserData(MainActivity.this, "userId").equalsIgnoreCase("")) {
             userId = "";
         } else {
-            userId = Common.getSavedUserData(MainActivity.this, "userId");
+            userId = SharedUtils.getSavedUserData(MainActivity.this, "userId");
             Log.d("userId", userId);
         }
 

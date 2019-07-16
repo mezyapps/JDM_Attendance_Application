@@ -96,7 +96,7 @@
             android:layout_weight="3"
             android:id="@+id/leave_types_spinnner"
             android:layout_height="40dp"
-            android:backgroundTint="@color/colorPrimary" />
+            android:backgroundTint="@color/colorAccent" />
 
     </LinearLayout>
     <EditText

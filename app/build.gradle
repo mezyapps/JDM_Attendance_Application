@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.mezyapps.jmdinfotech"
+        applicationId "com.mezyapps.jmdinfotech_attendance"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 8

@@ -23,6 +23,16 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
 
+        <!--  <meta-data
+           android:name="com.google.android.gms.ads.APPLICATION_ID"
+           android:value="ca-app-pub-3637958081667905~9637921993"/>-->
+
+        <!--Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713-->
+       <!-- <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>-->
+
+
         <activity android:name="com.mezyapps.jmdinfotech_attendance.view.activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -54,6 +64,10 @@
         <activity
             android:name="com.mezyapps.jmdinfotech_attendance.view.activities.ExtraMinutActivity"
             android:screenOrientation="portrait" />
+
+
+
+
     </application>
 
 </manifest>

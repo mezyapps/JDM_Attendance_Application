@@ -42,7 +42,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.model.LatLng;
 import com.mezyapps.jmdinfotech_attendance.utils.SharedUtils;
 import com.mezyapps.jmdinfotech_attendance.Config;
 import com.mezyapps.jmdinfotech_attendance.model.EmpDetailItem;
@@ -87,11 +86,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar  toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
+   // private AdView adView_banner_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //MobileAds.initialize(this,"ca-app-pub-3637958081667905~9637921993");//Live Url
+         //MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
 
         find_All_IDs();
         events();
@@ -109,6 +112,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         loginLogout_time_view_layout=findViewById(R.id.loginLogout_time_view_layout);
         tv_login_time_view=findViewById(R.id.tv_login_time_view);
         tv_logout_time_view=findViewById(R.id.tv_logout_time_view);
+      //  adView_banner_add=findViewById(R.id.adView_banner_add);
+
+
+
+       /* AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
+        adView_banner_add.loadAd(adRequest);
+*/
+       /* AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);*/
 
     }
 
@@ -661,7 +673,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         llocation = location.getLatitude() + "," + location.getLongitude();
 
         // You can now create a LatLng Object for use with maps
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+      //  LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         try {
 
             Geocoder geocoder = new Geocoder(this, Locale.getDefault());

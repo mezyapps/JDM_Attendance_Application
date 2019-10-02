@@ -17,16 +17,22 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,14 +92,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar  toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
-   // private AdView adView_banner_add;
+    private AdView adView_banner_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //MobileAds.initialize(this,"ca-app-pub-3637958081667905~9637921993");//Live Url
+        MobileAds.initialize(this,"ca-app-pub-3637958081667905~9637921993");//Live Url
          //MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
 
         find_All_IDs();
@@ -112,15 +118,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         loginLogout_time_view_layout=findViewById(R.id.loginLogout_time_view_layout);
         tv_login_time_view=findViewById(R.id.tv_login_time_view);
         tv_logout_time_view=findViewById(R.id.tv_logout_time_view);
-      //  adView_banner_add=findViewById(R.id.adView_banner_add);
+        adView_banner_add=findViewById(R.id.adView_banner_add);
 
 
 
-       /* AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
-        adView_banner_add.loadAd(adRequest);
-*/
-       /* AdRequest adRequest=new AdRequest.Builder().build();
+       /* AdRequest adRequest=new AdRequest.Builder().addTestDevice("EA935C5980439BBAE926C776B1C83FAB").build();
         adView_banner_add.loadAd(adRequest);*/
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);
 
     }
 
@@ -352,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 @Override
                                 public void onClick(DialogInterface arg0, int arg1) {
                                     final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
-                                    pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorPrimary));
+                                    pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorAccent));
                                     pDialog.setTitleText("Loading");
                                     pDialog.setCancelable(false);
                                     pDialog.show();
@@ -400,8 +406,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             layout.setVisibility(View.VISIBLE);
             layout.setOrientation(LinearLayout.VERTICAL);
             final Button btn2 = new Button(this);
-            btn2.setBackgroundColor(R.color.colorPrimaryDark);
-            btn2.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
+            btn2.setBackgroundColor(R.color.colorAccent);
+            btn2.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
             btn2.setTextColor(Color.WHITE);
             btn2.setText("LOGOUT");
             layout.addView(btn2);
@@ -416,7 +422,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 @Override
                                 public void onClick(DialogInterface arg0, int arg1) {
                                     final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
-                                    pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorPrimary));
+                                    pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorAccent));
                                     pDialog.setTitleText("Loading");
                                     pDialog.setCancelable(false);
                                     pDialog.show();
@@ -532,7 +538,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_less_miut) {
             startActivity(new Intent(MainActivity.this, LessMinutActivity.class));
         } else if (id == R.id.nav_month_wise_rport) {
-            startActivity(new Intent(MainActivity.this, MonthWiseReport.class));
+            final InterstitialAd interstitialAd;
+            interstitialAd = new InterstitialAd(MainActivity.this);
+            interstitialAd.setAdUnitId("ca-app-pub-3637958081667905/5934548884");
+            AdRequest adRequest=new AdRequest.Builder().build();
+            //AdRequest adRequest=new AdRequest.Builder().addTestDevice("EA935C5980439BBAE926C776B1C83FAB").build();
+            interstitialAd.loadAd(adRequest);
+
+            interstitialAd.setAdListener(new AdListener(){
+
+                @Override
+                public void onAdLoaded() {
+                    if(interstitialAd.isLoaded())
+                    {
+                        interstitialAd.show();
+                    }
+                }
+
+                @Override
+                public void onAdFailedToLoad(int i) {
+                    startActivity(new Intent(MainActivity.this, MonthWiseReport.class));
+
+                }
+
+                @Override
+                public void onAdClosed() {
+                    startActivity(new Intent(MainActivity.this, MonthWiseReport.class));
+
+                }
+            });
+
+
         } else if (id == R.id.nav_leaves) {
             startActivity(new Intent(MainActivity.this, LeavsActivity.class));
         } else if (id == R.id.nav_share) {
@@ -693,7 +729,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void showAlert() {
-        final android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(this);
+        final androidx.appcompat.app.AlertDialog.Builder dialog = new androidx.appcompat.app.AlertDialog.Builder(this);
         dialog.setTitle("Enable Location")
                 .setMessage("Your Locations Settings is set to 'Off'.\nPlease Enable Location to ")
                 .setPositiveButton("Location Settings", new DialogInterface.OnClickListener() {

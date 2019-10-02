@@ -2,7 +2,7 @@ package com.mezyapps.jmdinfotech_attendance;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.widget.Button;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;

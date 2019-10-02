@@ -415,14 +415,13 @@
      -->
 
         <!--Demo-->
-     <!--   <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView_banner_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
--->
+            ads:adUnitId="ca-app-pub-3637958081667905/3828968210"/>
     </RelativeLayout>
 </LinearLayout>

@@ -3,8 +3,8 @@ package com.mezyapps.jmdinfotech_attendance.view.activities;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +34,7 @@ public class LessMinutActivity extends AppCompatActivity {
     private String format;
     private Button lessminut_submit_btn;
     private EditText lessminut_remarks_ed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
